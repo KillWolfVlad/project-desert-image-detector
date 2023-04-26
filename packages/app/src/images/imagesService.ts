@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 
-import { UserDto } from "ᐸDtosᐳ";
+import { DetectedObjectDto } from "ᐸDtosᐳ";
 
 import { UploadImageUseCase } from "./useCases";
 
@@ -8,7 +8,7 @@ import { UploadImageUseCase } from "./useCases";
 export class ImagesService {
   public constructor(private readonly uploadImageUseCase: UploadImageUseCase) {}
 
-  public uploadImage(image: Express.Multer.File): Promise<UserDto> {
+  public uploadImage(image: Express.Multer.File): Promise<DetectedObjectDto[]> {
     return this.uploadImageUseCase.execute(image);
   }
 }

@@ -7,12 +7,12 @@ import { DynamicModule, Global, Module } from "@nestjs/common";
 import urlJoin from "proper-url-join";
 import qs from "qs";
 
-import { UsersClient } from "./usersClient";
+import { ImageDetectorClient } from "./imageDetectorClient";
 
 @Global()
 @Module({
-  providers: [UsersClient],
-  exports: [UsersClient],
+  providers: [ImageDetectorClient],
+  exports: [ImageDetectorClient],
 })
 export class ClientModule {
   public static registerAsync(

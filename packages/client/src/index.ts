@@ -1,2 +1,2 @@
-export * from "./clientModule";
-export * from "./usersClient";
+export * from "./imageDetectorClient";
+export * from "./imageDetectorModule";

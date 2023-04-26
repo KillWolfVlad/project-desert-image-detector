@@ -9,7 +9,7 @@ import {
 } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 
-import { UserDto } from "ᐸDtosᐳ";
+import { DetectedObjectDto } from "ᐸDtosᐳ";
 
 import { ApiCommonResponses } from "../infrastructure";
 
@@ -42,7 +42,7 @@ export class ImagesController {
   @Post("/")
   public uploadImage(
     @UploadedFile() image: Express.Multer.File,
-  ): Promise<UserDto> {
+  ): Promise<DetectedObjectDto[]> {
     return this.service.uploadImage(image);
   }
 }
