@@ -1,0 +1,50 @@
+{
+  "name": "root",
+  "version": "0.0.0-development",
+  "private": true,
+  "description": "root workspace",
+  "homepage": "https://github.com/Byndyusoft/ᐸRepository nameᐳ#readme",
+  "bugs": {
+    "url": "https://github.com/Byndyusoft/ᐸRepository nameᐳ/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Byndyusoft/ᐸRepository nameᐳ.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Byndyusoft",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspaces foreach --topological-dev --parallel --exclude root run build",
+    "build:src": "yarn workspaces foreach --topological-dev --parallel --exclude root run build:src",
+    "postinstall": "(husky install) || true",
+    "lint": "yarn run lint:eslint && yarn run lint:markdown && yarn run lint:prettier",
+    "lint:eslint": "eslint --ignore-path ./.gitignore --max-warnings 0 --ext .ts,.js .",
+    "lint:eslint:fix": "eslint --ignore-path ./.gitignore --fix --ext .ts,.js .",
+    "lint:fix": "yarn run lint:eslint:fix && yarn run lint:markdown:fix && yarn run lint:prettier:fix",
+    "lint:markdown": "markdownlint --ignore-path ./.gitignore \"./**/*.md\"",
+    "lint:markdown:fix": "markdownlint --ignore-path ./.gitignore --fix \"./**/*.md\"",
+    "lint:prettier": "prettier --ignore-path ./.gitignore --check \"./**/*.{ts,js,json,yaml,yml,md}\"",
+    "lint:prettier:fix": "prettier --ignore-path ./.gitignore --write \"./**/*.{ts,js,json,yaml,yml,md}\"",
+    "start": "yarn packages/app run start",
+    "start:migrator": "yarn packages/migrator run start",
+    "start:migrator:prod": "yarn packages/migrator run start:prod",
+    "start:prod": "yarn packages/app run start:prod",
+    "test": "yarn packages/app run test",
+    "test:cov": "yarn packages/app run test:cov"
+  },
+  "devDependencies": {
+    "@byndyusoft/eslint-config": "2.2.1",
+    "@commitlint/cli": "17.5.1",
+    "@commitlint/config-conventional": "17.4.4",
+    "eslint": "8.37.0",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.0",
+    "markdownlint-cli": "0.33.0",
+    "prettier": "2.8.7",
+    "prettier-plugin-packagejson": "2.4.3"
+  },
+  "packageManager": "yarn@4.0.0-rc.42"
+}

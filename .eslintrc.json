@@ -1,0 +1,34 @@
+{
+  "root": true,
+  "extends": ["@byndyusoft/eslint-config/backend"],
+  "parserOptions": {
+    "ecmaVersion": 2021, // Node.js v16 LTS
+    "project": ["./packages/*/tsconfig.json"]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "settings": {
+        "import/resolver": {
+          "typescript": {
+            "project": "./packages/*/tsconfig.json"
+          }
+        }
+      }
+    },
+    {
+      "files": ["./packages/entities/**/*Entity.ts"],
+      "rules": {
+        // eslint-plugin-import Static analysis
+        "import/no-cycle": "off" // for entities using cycle imports is safe
+      }
+    },
+    {
+      "files": ["./packages/migrator/src/migrations/*.ts"],
+      "rules": {
+        // @typescript-eslint/eslint-plugin Supported rules
+        "@typescript-eslint/member-ordering": "off" // up method should be before down method
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "@byndyusoft/nest-swagger",
+        "options": {
+          "dtoFileNameSuffix": ["Dto.ts", "Entity.ts"],
+          "controllerFileNameSuffix": "Controller.ts",
+          "introspectComments": true
+        }
+      }
+    ]
+  }
+}
