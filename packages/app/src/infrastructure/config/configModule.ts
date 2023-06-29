@@ -33,6 +33,7 @@ export class ConfigModule {
   private static loadConfig(): ConfigDto {
     const plainConfig: ConfigDto = {
       configEnv: process.env.CONFIG_ENV as string,
+      rtspUrl: process.env.RTSP_URL as string,
       http: {
         port: Number(process.env.HTTP_PORT ?? "8080"),
         host: process.env.HTTP_HOST ?? "0.0.0.0",

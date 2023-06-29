@@ -17,4 +17,7 @@ export class ConfigDto {
   @IsDefined()
   @ValidateNested()
   public readonly logger!: LoggerConfigDto;
+
+  @IsString()
+  public readonly rtspUrl!: string;
 }
