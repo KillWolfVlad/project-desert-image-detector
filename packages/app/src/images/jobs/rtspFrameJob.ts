@@ -46,13 +46,13 @@ export class RtspFrameJob implements OnModuleInit {
 
       await fs.writeFile(
         path.join(this.filePath, `${new Date().toISOString()}.jpg`),
-        Buffer.concat(this.actualData),
+        this.getActualImageBuffer(),
       )
     })
   }
 
-  public getActualImageBuffer(): Buffer[] {
-    return this.actualData;
+  public getActualImageBuffer(): Buffer {
+    return  Buffer.concat(this.actualData);
   }
 
   public async onModuleInit(): Promise<void> {
