@@ -3,16 +3,10 @@ import { IsDefined, IsString, ValidateNested } from "class-validator";
 
 import { HttpConfigDto } from "./httpConfigDto";
 import { LoggerConfigDto } from "./loggerConfigDto";
-import { PgConfigDto } from "./pgConfigDto";
 
 export class ConfigDto {
   @IsString()
   public readonly configEnv!: string;
-
-  @Type(() => PgConfigDto)
-  @IsDefined()
-  @ValidateNested()
-  public readonly pg!: PgConfigDto;
 
   @Type(() => HttpConfigDto)
   @IsDefined()
@@ -23,4 +17,7 @@ export class ConfigDto {
   @IsDefined()
   @ValidateNested()
   public readonly logger!: LoggerConfigDto;
+
+  @IsString()
+  public readonly rtspUrl!: string;
 }

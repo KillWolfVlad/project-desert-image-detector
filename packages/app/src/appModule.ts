@@ -1,18 +1,19 @@
-import { DynamicModule, Module } from "@nestjs/common";
+import {DynamicModule, Module} from "@nestjs/common";
+import {ScheduleModule} from "@nestjs/schedule";
 
-import { UsersModule } from "./users/usersModule";
+import {ImagesModule} from "./images/imagesModule";
 
 @Module({})
 export class AppModule {
   public static async register(): Promise<DynamicModule> {
     // InfrastructureModule must be imported last, due to decorated providers
-    const { InfrastructureModule } = await import(
+    const {InfrastructureModule} = await import(
       "./infrastructure/infrastructureModule"
-    );
+      );
 
     return {
       module: AppModule,
-      imports: [UsersModule, InfrastructureModule],
+      imports: [ImagesModule, ScheduleModule.forRoot(), InfrastructureModule],
     };
   }
 }
